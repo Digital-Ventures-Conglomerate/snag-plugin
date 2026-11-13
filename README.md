@@ -65,6 +65,6 @@ claude plugin update snag@snag-plugin
 
 ## Support and license
 
-Support and docs: https://snag.ac (walkthrough: https://snag.ac/how). Privacy policy: https://snag.ac/privacy.
+Support: drewstockler@snag.ac. Docs: https://snag.ac (walkthrough: https://snag.ac/how). Privacy policy: https://snag.ac/privacy.
 
 MIT licensed. See [LICENSE](LICENSE).

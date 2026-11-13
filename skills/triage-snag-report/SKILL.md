@@ -34,12 +34,13 @@ There is no tool to change a report's status or comment on it. Do not claim one 
 
 ### 1. Resolve the report
 
-Accept a bare ID (`TKT-12`) or a URL containing one (for example `https://app.snag.ac/ticket/TKT-12`, with or without trailing slash, query or fragment). Pull out the `TKT-<number>` and call `get_bug_context`.
+Accept a bare ID (`TKT-12`) or any URL that contains one. Do not assume a particular host or path: find the single `TKT-` followed by digits (`TKT-\d+`) in the text, ignoring any trailing slash, query or fragment, and call `get_bug_context` with it. If the text holds no such token or more than one different one, ask which report is meant.
 
-If the call fails:
-- Authentication error: tell the user to sign in to the Snag server (run `/mcp` and pick `snag`), then stop.
-- The error says MCP requires the Capture plan, or the workspace is not entitled: tell the user a Snag workspace on the Capture plan is required, point them to https://snag.ac, and stop. Do not retry.
-- "bug not found": say the ID was not found in the signed-in workspace and offer `list_open_bugs`. Stop.
+If the call fails, go by what the error means; the server's exact wording may change:
+- It is an authentication problem: tell the user to sign in to the Snag server (run `/mcp` and pick `snag`), then stop.
+- It says the workspace is not entitled or that MCP needs the Capture plan (or a founding workspace): tell the user a Snag workspace on the Capture plan is required, point them to https://snag.ac, and stop. Do not retry.
+- It says the bug was not found: say the ID was not found in the signed-in workspace and offer `list_open_bugs`. Stop.
+- Anything else: show the error and stop; do not retry in a loop.
 
 ### 2. Read the evidence before the code
 
@@ -80,15 +81,17 @@ Run the cheapest existing check that covers the change: typecheck, lint, or the 
 - Branch: `snag/<report-id>-<short-slug>`, for example `snag/TKT-12-null-session-pay`.
 - One commit. Title under 70 characters.
 - Draft a PR body with: what the user saw (step 2), the cause, the change, the check you ran and its result, and the report link.
-- Open the PR only if the user asked for it or the command was run with `--pr`. Otherwise leave the branch in place and show the body.
+- Creating the local branch and commit is fine. Open the PR only if the user asked for it in this request (for example `/snag:fix <id> --pr`). Otherwise leave the branch in place and show the body.
 
 ### 9. Close the loop
 
 Once a PR exists, call `post_pr_link` with its real URL (`https://github.com/<owner>/<repo>/pull/<n>`). Never call it with a URL you invented or before the PR exists. Do not close the report.
 
-If no PR was opened, say so and do not call `post_pr_link`.
+If you did not open the PR, say so and do not call `post_pr_link`. If the user opens it themselves later and gives you the URL, call `post_pr_link` then.
 
 ## Worked example
+
+Illustrative only: it shows the shape of the work, not what other bugs will look like. Take the cause from the evidence in front of you, never from this example.
 
 The demo shop (`Digital-Ventures-Conglomerate/snag-demo-shop`) has a planted bug: after the session expires, **Pay** does nothing.
 

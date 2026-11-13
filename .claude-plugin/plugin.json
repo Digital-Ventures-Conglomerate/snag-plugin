@@ -10,6 +10,7 @@
   "keywords": ["bug-reports", "qa", "session-replay", "github", "mcp"],
   "mcpServers": "./.mcp.json",
   "skills": "./skills/",
+  "commands": "./commands/",
   "documentationUrl": "https://snag.ac/how",
   "supportUrl": "https://snag.ac",
   "icon": "./.claude-plugin/icon.png",

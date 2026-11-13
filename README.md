@@ -19,13 +19,13 @@ Or, from inside a Claude Code session:
 
 You need a Snag workspace on the Capture plan: create one at https://snag.ac.
 
-The plugin adds Snag's MCP server (`https://mcp.snag.ac/mcp`). Sign in once: run `/mcp`, choose `snag`, and complete the browser sign-in. Claude Code stores and refreshes the token. The plugin never asks for, stores or writes a key, and nothing about your workspace is kept in this repo.
+The plugin adds Snag's MCP server (`https://mcp.snag.ac/mcp`). Sign in once: run `/mcp`, choose the Snag server (listed as `plugin:snag:snag`), and complete the browser sign-in. Claude Code stores and refreshes the token. The plugin never asks for, stores or writes a key, and nothing about your workspace is kept in this repo.
 
 Not using Claude Code? Snag also connects to Cursor, VS Code and other MCP clients with a token from your Snag dashboard.
 
 ## Use
 
-Point Claude at a report from inside the repo the report is about:
+Point Claude at a report from inside the repo the report is about. This example is illustrative, not a recorded run:
 
 ```
 > /snag:fix TKT-7
@@ -40,9 +40,9 @@ Fix: guard the null session in PayButton.tsx. Check: npm run typecheck passes.
 Branch snag/TKT-7-null-session-pay ready, PR body drafted. Add --pr to open it.
 ```
 
-That transcript is illustrative. `/snag:fix <id>` accepts a report ID or any URL containing one; add `--pr` to open the pull request. With no argument it lists open reports and asks which to fix.
+`/snag:fix <id>` accepts a report ID or any URL containing one; add `--pr` to open the pull request. With no argument it lists open reports and asks which to fix. Once a PR exists, the plugin links it back to the Snag report.
 
-![A Snag agent's fix: a two-line change to PayButton.tsx](https://snag.ac/assets/snag-agent-diff.jpg)
+![A Snag agent's fix: a two-line change to PayButton.tsx](assets/agent-diff.jpg)
 
 What is in the plugin:
 
@@ -61,6 +61,7 @@ claude plugin update snag@snag-plugin
 
 - Claude Code 2.1.275 or later (in-session `/plugin install ... --marketplace`)
 - `git`, and a GitHub remote for the repo you are fixing
+- The GitHub CLI (`gh`), signed in, if you want `--pr` to open the pull request
 - A Snag account on the Capture plan: https://snag.ac
 
 ## Support and license

@@ -37,7 +37,7 @@ There is no tool to change a report's status or comment on it. Do not claim one 
 Accept a bare ID (`TKT-12`) or any URL that contains one. Do not assume a particular host or path: find the single `TKT-` followed by digits (`TKT-\d+`) in the text, ignoring any trailing slash, query or fragment, and call `get_bug_context` with it. If the text holds no such token or more than one different one, ask which report is meant.
 
 If the call fails, go by what the error means; the server's exact wording may change:
-- It is an authentication problem: tell the user to sign in to the Snag server (run `/mcp` and pick `snag`), then stop.
+- It is an authentication problem: tell the user to sign in to the Snag server (run `/mcp` and pick the Snag server, listed as `plugin:snag:snag`), then stop.
 - It says the workspace is not entitled or that MCP needs the Capture plan (or a founding workspace): tell the user a Snag workspace on the Capture plan is required, point them to https://snag.ac, and stop. Do not retry.
 - It says the bug was not found: say the ID was not found in the signed-in workspace and offer `list_open_bugs`. Stop.
 - Anything else: show the error and stop; do not retry in a loop.

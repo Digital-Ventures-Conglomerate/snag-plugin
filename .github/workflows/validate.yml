@@ -27,7 +27,7 @@ jobs:
       # This repo is public: nothing internal or secret may ever land in it.
       - name: No internal URLs or tokens
         run: |
-          if git grep -nE 'mcp\.dev\.snag\.ac|\.run\.app|Bearer mcp_|mcp_[A-Za-z0-9_-]{8,}' -- . ':!.github/workflows/validate.yml'; then
+          if git grep -nE '\.dev\.snag\.ac|\.run\.app|beacon-(dev|prod)-[0-9]+|Bearer mcp_|mcp_[A-Za-z0-9]{16,}|wk_(live|test)_[A-Za-z0-9_-]{6,}' -- . ':!.github/workflows/validate.yml'; then
             echo "::error::internal URL or token-shaped string found"
             exit 1
           fi

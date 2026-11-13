@@ -1,0 +1,15 @@
+{
+  "name": "snag",
+  "displayName": "Snag",
+  "version": "1.0.0",
+  "description": "Turn Snag bug reports (replay, console, network) into fix PRs from Claude Code.",
+  "author": { "name": "Snag", "url": "https://snag.ac" },
+  "homepage": "https://snag.ac",
+  "repository": "https://github.com/Digital-Ventures-Conglomerate/snag-plugin",
+  "license": "MIT",
+  "keywords": ["bug-reports", "qa", "session-replay", "github", "mcp"],
+  "documentationUrl": "https://snag.ac/how",
+  "supportUrl": "https://snag.ac",
+  "icon": "./.claude-plugin/icon.png",
+  "privacyPolicyUrl": "https://snag.ac/privacy"
+}

@@ -1,0 +1,12 @@
+{
+  "name": "snag-plugin",
+  "description": "Snag for Claude Code: bug reports with replay, console and network capture, turned into fix PRs.",
+  "owner": { "name": "Snag", "url": "https://snag.ac" },
+  "plugins": [
+    {
+      "name": "snag",
+      "source": "./",
+      "description": "Turn Snag bug reports (replay, console, network) into fix PRs from Claude Code."
+    }
+  ]
+}

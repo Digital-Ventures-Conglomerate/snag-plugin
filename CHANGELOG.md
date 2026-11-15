@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.1
+
+- `snag-install` skill: describe where the public workspace key goes without naming credential-style environment variables (the key is public by design and the plugin never reads it).
+
 ## 1.0.0
 
 - Installs the Snag MCP server (`https://mcp.snag.ac/mcp`, OAuth sign-in) with its seven bug-report tools.

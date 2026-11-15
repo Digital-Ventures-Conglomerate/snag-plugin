@@ -1,7 +1,7 @@
 {
   "name": "snag",
   "displayName": "Snag",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Turn Snag bug reports (replay, console, network) into fix PRs from Claude Code.",
   "author": { "name": "Snag", "url": "https://snag.ac" },
   "homepage": "https://snag.ac",

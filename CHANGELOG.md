@@ -2,7 +2,7 @@
 
 ## 1.0.1
 
-- `snag-install` skill: describe where the public workspace key goes without naming credential-style environment variables (the key is public by design and the plugin never reads it).
+- `snag-install` skill: describe where the public workspace key goes without naming credential-style environment variables (the key is public).
 
 ## 1.0.0
 

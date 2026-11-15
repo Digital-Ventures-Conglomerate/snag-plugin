@@ -37,10 +37,10 @@ Look at the repo (`package.json`, `Gemfile`, `manage.py`, `wp-config.php`, `inde
 
 | Framework | Where | Key |
 |---|---|---|
-| Next.js | `app/layout.tsx` (or `pages/_app.tsx`) using `next/script` with `strategy="afterInteractive"` | the project's public env var for the workspace key (Next exposes only `NEXT_PUBLIC_`-prefixed vars to the browser) |
-| Vite / React | `index.html` `<head>`, `data-snag-key="%VITE_<NAME>%"` | a `VITE_`-prefixed var in `.env.local` (gitignored); the `%…%` placeholder in `data-snag-key` names it |
+| Next.js | `app/layout.tsx` (or `pages/_app.tsx`) using `next/script` with `strategy="afterInteractive"` | a `NEXT_PUBLIC_`-prefixed env var |
+| Vite / React | `index.html` `<head>`, with `data-snag-key` filled from a build-time variable | a `VITE_`-prefixed var in `.env.local` (gitignored) |
 | Plain HTML | the shared `<head>` or layout partial | inject at deploy time; if the site has no build step, leave a clearly marked placeholder (`<workspace-key>`) and tell the user to fill it in at deploy, since the key will be in the page source either way |
-| Rails | `app/views/layouts/application.html.erb` | an `ENV[...]` entry or the Rails credentials file |
+| Rails | `app/views/layouts/application.html.erb` | `ENV` or Rails credentials |
 | Django | the base template, key passed from settings | a setting read from the environment |
 | WordPress | `functions.php`: enqueue `https://snag.ac/embed.js` with `wp_enqueue_script`, then add `data-snag-key` with a `script_loader_tag` filter (`wp_enqueue_script` cannot set custom attributes) | a constant defined in `wp-config.php` |
 
